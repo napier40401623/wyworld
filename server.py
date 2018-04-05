@@ -1,5 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
 import json
+
 
 w = json.load(open("worldl.json"))
 for c in w:
@@ -66,9 +68,31 @@ def deleteCountryPage(n):
 		w = w[0:page_size])
 #all deleted country will be back on the list after restarting the server
 
-app.run(host='0.0.0.0', port=5645, debug=True)
+@app.route('/editcountryByName/<n>')
+def editcountryByNamePage(n):
+	c = None
+	for x in w:
+		if x['name'] == n:
+			c = x
+	return render_template(
+		'country-edit.html',
+		c = c)
+
+@app.route('/updatecountrybyname')
+def updatecountryByNamePage():
+	n=request.args.get('name')
+	c = None
+	for x in w:
+		if x['name'] == n:
+			c = x
+	c['capital']=request.args.get('capital')
+	c['continent']=request.args.get('continent')
+	return render_template(
+		'country.html',
+		c = c)
 
 
+app.run(host='0.0.0.0', port=5623, debug=True)
 
 
 
