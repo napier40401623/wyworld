@@ -11,6 +11,7 @@ img.big {
     position: absolute;
     right: 1ex;
     top: 1ex;
+
 }
 
 .properties div div{
@@ -27,6 +28,35 @@ a{
 }
 
 .nav_button{
-    border:solid gray thin;
-    bottom: auto;
+    border: 1px solid black;
+    padding: 1ex;
+    width: 8ex;
+    text-align: center;
+
+}
+.nav_button:hover{
+background-color: green;
+
     }
+.edit-button{
+    border: 1px solid black;
+    padding: 1ex;
+    width: 8ex;
+    text-align: center;
+    display: inline-block;
+}
+.edit-button:hover{
+    background-color: green;
+}
+.button{
+    border: 1px solid black;
+    padding: 1ex;
+    width: 8ex;
+    text-align: center;
+   
+
+    }
+    
+.button:hover{
+background-color: green;
+}

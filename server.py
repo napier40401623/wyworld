@@ -78,21 +78,52 @@ def editcountryByNamePage(n):
 		'country-edit.html',
 		c = c)
 
+
 @app.route('/updatecountrybyname')
 def updatecountryByNamePage():
+	c=None
 	n=request.args.get('name')
-	c = None
+	c={}
 	for x in w:
 		if x['name'] == n:
 			c = x
+	#c['name']=request.args.get('name')
 	c['capital']=request.args.get('capital')
 	c['continent']=request.args.get('continent')
+	c['area']=int(request.args.get('area'))
+	c['population']=int(request.args.get('population'))
+	c['gdp']=int(request.args.get('gdp'))
+	c['tld']=request.args.get('tld')
+	#w.append(c)
 	return render_template(
 		'country.html',
 		c = c)
 
 
-app.run(host='0.0.0.0', port=5623, debug=True)
+
+@app.route('/savecountrybyname')
+def savecountryByNamePage():
+	c={}
+	c['name']=request.args.get('name')
+	c['capital']=request.args.get('capital')
+	c['continent']=request.args.get('continent')
+	c['area']=int(request.args.get('area'))
+	c['population']=int(request.args.get('population'))
+	c['gdp']=int(request.args.get('gdp'))
+	c['tld']=request.args.get('tld')
+	w.append(c)
+	return render_template(
+		'country.html',
+		c = c)
+
+@app.route('/createcountrybyname')
+def createcountryByNamePage():
+	c=None
+	return render_template(
+		'createcountrybyname.html',c=c)
+
+if __name__=="__main__":
+	app.run(host='0.0.0.0', port=5623, debug=True)
 
 
 

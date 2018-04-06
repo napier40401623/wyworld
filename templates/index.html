@@ -3,9 +3,9 @@
 <head>
 	<link rel='stylesheet' href='/static/style.css'>
 </head>
-	<body>
+	<body background="/static/image/backgroung.jpg" >
 		<h1>World Factbook</h1>
-		<div>There are {{w|length}} countries in in the world.</div>
+		<div><i>There are {{w|length}} countries in this page</i></div>
 		<ul>
 			{% for c in w %}
 			<li><a href='/countryByName/{{c.name}}'>
@@ -13,11 +13,8 @@
 			 {{c.name}}</a></li>
 			{% endfor %}
 		</ul>
-		<div class='nav_button'>
-			<a href='/begin/{{page_number-page_size}}'>Previous Page</a>
-		</div>
-		<div class='nav_button'>
-			<a href='/begin/{{page_number+page_size}}'>Next Page</a>
-		</div>
+			<a href='/begin/{{page_number-page_size}}' class='button'>Previous Page</a>
+			<a href='/begin/{{page_number+page_size}}' class='button'>Next Page</a>
+		 	<a href='/createcountrybyname' class='button'> create </a> 
 	</body>
 </html>
