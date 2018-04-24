@@ -14,6 +14,22 @@ img.big {
 
 }
 
+ul#sort a:link{
+    background-color: #92a8d1;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    list-style-type: none;
+}
+
+}
+
+ul#sort a:hover{
+    background-color: green;
+}
+
 .properties div div{
 	display:inline-block;
 }
