@@ -4,6 +4,9 @@ import json
 
 
 w = json.load(open("worldl.json"))
+lota=sorted(list(set([c['name'][0] for c in w])))
+
+print(lota)
 for c in w:
 	c['tld'] = c['tld'][1:]
 page_size = 20
@@ -14,7 +17,8 @@ def mainPage():
 	return render_template('index.html',
 		page_number=0,
 		page_size=page_size,
-		w = w[0:page_size])
+		w = w[0:page_size],lota=lota)
+		
 
 @app.route('/begin/<b>')
 def beginPage(b):
@@ -34,7 +38,16 @@ def continentPage(a):
 		cl = cl,
 		a = a
 		)
-
+@app.route('/startWithAlphabetic/<a>')
+def startWithAlphabetic(a):
+	cl = [c for c in w if c['name'][0]==a]
+	return render_template(
+		'continent.html',
+		length_of_cl = len(cl),
+		cl = cl,
+		a = a,
+		lota=lota
+		)
 @app.route('/country/<i>')
 def countryPage(i):
 	return render_template(
