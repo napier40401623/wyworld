@@ -9,8 +9,9 @@ img.big {
     width: 200px;
     border: solid thin grey;
     position: absolute;
-    right: 1ex;
-    top: 1ex;
+    right: 30ex;
+    left: 42ex;
+    top: 4ex;
 
 }
 
